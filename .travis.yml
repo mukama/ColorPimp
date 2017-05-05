@@ -5,8 +5,8 @@ node_js:
 before_script:
   - npm install -g gulp-cli
   - npm install -g bower
+  - bower install
 
 install:
   - npm install
-  - bower install
   - gulp build
