@@ -1,47 +1,20 @@
 {
+  "name": "colorpimp",
   "private": true,
+  "description": "Online color scheme generator for monotone and mixed colors",
+  "license": "MIT",
   "engines": {
-    "node": ">=4"
+    "node": ">=14"
+  },
+  "scripts": {
+    "build:css": "sass app/styles/main.scss app/styles/main.css --no-source-map",
+    "build": "npm run build:css && mkdir -p dist/styles dist/scripts && cp app/index.html dist/ && cp app/styles/main.css dist/styles/ && cp app/scripts/main.js dist/scripts/ && cp app/favicon.ico dist/ 2>/dev/null; cp app/robots.txt dist/ 2>/dev/null; true",
+    "watch": "sass --watch app/styles/main.scss:app/styles/main.css",
+    "serve": "npm run build:css && npx http-server app -p 9000 -o",
+    "clean": "rm -rf dist .tmp app/styles/main.css app/styles/main.css.map"
   },
   "devDependencies": {
-    "babel-core": "^6.4.0",
-    "babel-preset-es2015": "^6.3.13",
-    "babel-register": "^6.5.2",
-    "browser-sync": "^2.2.1",
-    "del": "^2.2.0",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^3.0.1",
-    "gulp-babel": "^6.1.1",
-    "gulp-cache": "^0.4.2",
-    "gulp-cssnano": "^2.0.0",
-    "gulp-eslint": "^3.0.0",
-    "gulp-filter": "^4.0.0",
-    "gulp-htmlmin": "^3.0.0",
-    "gulp-if": "^2.0.2",
-    "gulp-imagemin": "^3.0.1",
-    "gulp-load-plugins": "^1.2.4",
-    "gulp-plumber": "^1.0.1",
-    "gulp-sass": "^2.0.0",
-    "gulp-size": "^2.1.0",
-    "gulp-sourcemaps": "^2.2.0",
-    "gulp-uglify": "^2.0.0",
-    "gulp-useref": "^3.0.0",
-    "main-bower-files": "^2.5.0",
-    "run-sequence": "^1.2.2",
-    "wiredep": "^4.0.0"
-  },
-  "eslintConfig": {
-    "env": {
-      "es6": true,
-      "node": true,
-      "browser": true,
-      "jquery": true
-    },
-    "rules": {
-      "quotes": [
-        2,
-        "single"
-      ]
-    }
+    "http-server": "^14.1.1",
+    "sass": "^1.71.0"
   }
 }
